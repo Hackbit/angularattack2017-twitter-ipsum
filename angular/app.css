@@ -8,8 +8,11 @@ Angular Attack 2017!
 Main Styles
 ***********/
 
-body {
+body,
+html {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	background-size: cover;
+	background: #87cefa no-repeat; /* For browsers that do not support gradients */
 }
 
 /* I Love Smooth Transitions! */
@@ -47,7 +50,10 @@ body {
 	font-family: Arial, sans-serif;
 }
 
-/* Splash Page */
+/**********
+Splash Page
+***********/
+
 .main-search {
 	margin-top: 25px;
 	margin-bottom: 25px;
@@ -60,6 +66,27 @@ body {
 
 .ipsum-text {
 	text-align: left;
+}
+
+.ipsum-well {
+	background-color: white;
+}
+
+button.btn-default {
+	background-color: #65bdff;
+}
+
+button.btn-default:hover {
+	background-color: white;
+}
+
+a:link, a:visited {
+	color: white;
+	text-decoration: none;
+}
+
+a:link:active, a:visited:active {
+	color: white;
 }
 
 /* Media Queries */

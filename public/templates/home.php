@@ -1,5 +1,5 @@
 <div align="center">
-	<h2>Start Searching Now For New Twitter Ipsum!</h2>
+	<h2 class="new-twitter">Start Searching Now For New Twitter Ipsum!</h2>
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
 			<div class="input-group main-search">

@@ -11,6 +11,6 @@ Homestead.json
 Homestead.yaml
 /angular/**/*.js
 /angular/**/*.js.map
-/public_html/dist
-/public_html/index.php
+/public/dist
+/resources/views/welcome.php
 /npm-debug.log

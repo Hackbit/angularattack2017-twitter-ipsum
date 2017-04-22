@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Profile extends Model
 {
@@ -11,8 +12,8 @@ class Profile extends Model
 	public $timestamps = false;
 
 
-	public function store() {
-		$input = \Request::json();
+	public function store(Request $request) {
+		dd($request);
 		$this->save();
 	}
 

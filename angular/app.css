@@ -1,0 +1,23 @@
+/********************
+Twitter Ipsum CSS Styles
+@dbeetz, @dmcdonald, @bbrown, @actordie
+ ********************/
+
+/* main styles */
+
+/* Navbar */
+#navbar-main {
+	@navbar-height: 75px;
+	@navbar-padding-vertical: 0;
+
+}
+
+.navbar-default {
+	background-color: white;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	color: blue;
+	background-color: blue;
+}

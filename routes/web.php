@@ -16,6 +16,12 @@ Route::get('/', function () {
 Route::get('/profile', function () {
 	return view('welcome');
 });
+Route::get('/legal', function () {
+	return view('welcome');
+});
+Route::get('/terms', function () {
+	return view('welcome');
+});
 Route::get('twitter/oauth', ['as' => 'twitter.login', function(){
 	// your SIGN IN WITH TWITTER  button should point to this route
 	$sign_in_twitter = true;

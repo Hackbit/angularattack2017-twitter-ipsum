@@ -2,6 +2,7 @@
 
 use App\Ipsum;
 use App\Profile;
+use App\TwitterUser;
 use Illuminate\Http\Request;
 
 
@@ -35,3 +36,11 @@ Route::post("/profile", function (Request $request) {
 Route::get("profile/{id}", function($id) {
 	return Profile::where("profileId", $id)->get();
 });
+
+Route::post("/twitter-user", function(Request $request) {
+	TwitterUser::create($request->all());
+});
+
+//Route::get("/twitter-user/{atHandle}", function($atHandle) {
+//	$twitterUsers = TwitterUser::where("twitterUserAtHandle", $atHandle)->get();
+//});

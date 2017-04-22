@@ -11,6 +11,10 @@ class Profile extends Model
 	protected $primaryKey = 'profileId';
 	public $timestamps = false;
 
+	protected $fillable = ['profileAccessToken', 'profileAtHandle', 'profileEmail'];
+
+
+
 	private $profileAccessToken;
 	private $profileAtHandle;
 	private $profileEmail;
@@ -20,6 +24,7 @@ class Profile extends Model
 		$this->profileAccessToken = $request->input("profileAccessToken");
 		$this->profileAtHandle = $request->input("profileAtHandle");
 		$this->profileEmail = $request->input("profileEmail");
+		//dd($this);
 		$this->save();
 	}
 

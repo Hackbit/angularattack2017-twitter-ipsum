@@ -36,6 +36,7 @@ Route::post("/ipsum", function () {
 //});
 
 Route::post("/profile", function (Request $request) {
-	$profile = new Profile();
-	$profile->store($request);
+	$profile = Profile::create($request->all());
+
+	//$profile->save();
 });

@@ -33,6 +33,11 @@ Route::get('/ipsum/{profileId}', function($profileId) {
 	return Ipsum::where("ipsumProfileId", $profileId)->get();
 });
 
+route::get('/ipsum/at-handle/{profileAtHandle}', function($profileAtHandle) {
+	$profile = Profile::where("profileAtHandle", $profileAtHandle)->first();
+	return Ipsum::where("ipsumProfileId", $profile->profileId)->get();
+});
+
 Route::post("/profile", function (Request $request) {
 	Profile::create($request->all());
 });

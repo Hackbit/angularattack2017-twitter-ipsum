@@ -13,6 +13,6 @@ class Ipsum extends Model
 	protected $fillable = ["ipsumContent", "ipsumProfileId"];
 
 	public function profile() {
-		return($this->belongsTo("profile", "profileId"));
+		return($this->belongsTo("App\\Profile", "profileId"));
 	}
 }

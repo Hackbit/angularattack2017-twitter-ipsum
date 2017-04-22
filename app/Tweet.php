@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Tweet extends Model
 {
 	protected $table = 'tweet';
-
+	protected $primaryKey = 'tweetId';
+	public $incrementing = false;
 }

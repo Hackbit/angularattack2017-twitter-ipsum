@@ -19,7 +19,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.(html|php)$/,
-				loader: "html-loader"
+				loader: "html-loader"2
 			},
 			{
 				test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,

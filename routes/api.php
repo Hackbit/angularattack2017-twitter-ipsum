@@ -31,3 +31,7 @@ Route::post("/ipsum", function () {
 Route::post("/profile", function (Request $request) {
 	Profile::create($request->all());
 });
+
+Route::get("profile/{id}", function($id) {
+	return Profile::where("profileId", $id)->get();
+});

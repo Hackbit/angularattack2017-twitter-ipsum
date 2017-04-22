@@ -6,6 +6,7 @@ use App\TwitterUser;
 use App\Tweet;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Thujohn\Twitter\Twitter;
 
 
 
@@ -69,8 +70,19 @@ Route::get("/tweetByTweetTwitterAtHandle/{tweetTwitterAtHandle}", function($twee
 		$twitterUser = TwitterUser::where("TwitterUserAtHandle", $tweetTwitterAtHandle)->firstOrFail();
 	} catch(ModelNotFoundException $modelNotFoundException) {
 		try {
-			$twitterData = Twitter::getUserTimeline(["screen_name" => $tweetTwitterAtHandle, "format" => "json"]);
-			dd($twitterData);
+			$twitterUser = null;
+			$twitterData = json_decode(Twitter::getUserTimeline(["screen_name" => $tweetTwitterAtHandle, "format" => "json"]));
+			$tweets = [];
+			foreach($twitterData as $tweet) {
+				if($twitterUser === null) {
+					$twitterUser = TwitterUser::create(["twitterUserId" => $tweet->user->id_str, "twitterUserAtHandle" => $tweet->user->screen_name, "twitterUserImage" => $tweet->user->profile_image_url_https]);
+				}
+
+				$linkedTweet = Twitter::linkify($tweet);
+				$newTweet = Tweet::create(["tweetTwitterUserId" => $twitterUser->twitterUserId, "tweetContent" => $linkedTweet->text]);
+				$tweets[] = $newTweet;
+			}
+			dd($tweets);
 		} catch(Exception $exception) {
 			dd(Twitter::logs());
 		}

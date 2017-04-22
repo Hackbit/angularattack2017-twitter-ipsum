@@ -1,4 +1,5 @@
 <?php
+use App\Profile;
 use Illuminate\Support\Facades\Input;
 /*
 |--------------------------------------------------------------------------
@@ -85,9 +86,9 @@ Route::get('twitter/success', ['as' => 'twitter.callback', function() {
 			// Auth::login($user) should do the trick.
 
 			Session::put('access_token', $token);
-//			dd($token);
-			dd($credentials);
-			//return Redirect::to('/')->with('flash_notice', 'Congrats! You\'ve successfully signed in!');
+			Profile::create(["profileAccessToken" => $token["oauth_token"], "profileAtHandle" => $credentials->screen_name, "profileEmail" => $credentials->email]);
+
+			return Redirect::to('/')->with('flash_notice', 'Congrats! You\'ve successfully signed in!');
 		}
 
 		return Redirect::route('twitter.error')->with('flash_error', 'Crab! Something went wrong while signing you up!');

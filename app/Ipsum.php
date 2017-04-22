@@ -6,10 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ipsum extends Model
 {
-	protected $table = 'ipsum';
-	protected $primaryKey = 'ipsumId';
+	protected $table = "ipsum";
+	protected $primaryKey = "ipsumId";
 	public $timestamps = false;
 
-	protected $fillable = ['ipsumContent', 'ipsumProfileId'];
+	protected $fillable = ["ipsumContent", "ipsumProfileId"];
 
+	public function profile() {
+		return($this->belongsTo("profile", "profileId"));
+	}
 }

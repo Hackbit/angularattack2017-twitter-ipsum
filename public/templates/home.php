@@ -1,1 +1,3 @@
-<h1>Home Component</h1>
+<div align="center">
+<h1>Start Searching Now For New Twitter Ipsum!</h1>
+</div>

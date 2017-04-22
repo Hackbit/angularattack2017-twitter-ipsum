@@ -6,8 +6,6 @@ use App\TwitterUser;
 use App\Tweet;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Thujohn\Twitter\Twitter;
-
 
 
 /*
@@ -34,21 +32,21 @@ Route::get('/ipsum/new/{twitterUserAtHandle}', function ($twitterUserAtHandle) {
 	$twitterUser = TwitterUser::where("twitterUserAtHandle", $twitterUserAtHandle)->first();
 	$tweets = Tweet::where("tweetTwitterUserId", $twitterUser->twitterUserId)->get();
 	$tweetToShuffle = "";
-	foreach ($tweets as $tweetObject) {
-		$tweetToShuffle = $tweetToShuffle.$tweetObject->tweetContent." ";
+	foreach($tweets as $tweetObject) {
+		$tweetToShuffle = $tweetToShuffle . $tweetObject->tweetContent . " ";
 	}
 
 	$tweetToShuffle = explode(" ", $tweetToShuffle);
 	shuffle($tweetToShuffle);
 	$ipsum = implode(" ", $tweetToShuffle);
-	return($ipsum);
+	return ($ipsum);
 });
 
-Route::get('/ipsum/{profileId}', function($profileId) {
+Route::get('/ipsum/{profileId}', function ($profileId) {
 	return Ipsum::where("ipsumProfileId", $profileId)->get();
 });
 
-route::get('/ipsum/at-handle/{profileAtHandle}', function($profileAtHandle) {
+route::get('/ipsum/at-handle/{profileAtHandle}', function ($profileAtHandle) {
 	$profile = Profile::where("profileAtHandle", $profileAtHandle)->first();
 	return Ipsum::where("ipsumProfileId", $profile->profileId)->get();
 });
@@ -57,44 +55,40 @@ Route::post("/profile", function (Request $request) {
 	Profile::create($request->all());
 });
 
-Route::get("profile/{id}", function($id) {
+Route::get("profile/{id}", function ($id) {
 	return Profile::where("profileId", $id)->get();
 });
 
-Route::post("/tweet", function(Request $request) {
+Route::post("/tweet", function (Request $request) {
 	Tweet::create($request->all());
 });
 
-Route::get("/tweetByTweetTwitterAtHandle/{tweetTwitterAtHandle}", function($tweetTwitterAtHandle) {
+Route::get("/tweetByTweetTwitterAtHandle/{tweetTwitterAtHandle}", function ($tweetTwitterAtHandle) {
 	try {
-		$twitterUser = TwitterUser::where("TwitterUserAtHandle", $tweetTwitterAtHandle)->firstOrFail();
+		$twitterUser = TwitterUser::where("TwitterUserAtHandle", $tweetTwitterAtHandle)->firstOrFail()->get();
 	} catch(ModelNotFoundException $modelNotFoundException) {
-		try {
-			$twitterUser = null;
-			$twitterData = json_decode(Twitter::getUserTimeline(["screen_name" => $tweetTwitterAtHandle, "format" => "json"]));
-			$tweets = [];
-			foreach($twitterData as $tweet) {
-				if($twitterUser === null) {
-					$twitterUser = TwitterUser::create(["twitterUserId" => $tweet->user->id_str, "twitterUserAtHandle" => $tweet->user->screen_name, "twitterUserImage" => $tweet->user->profile_image_url_https]);
-				}
-
-				$linkedTweet = Twitter::linkify($tweet);
-				$newTweet = Tweet::create(["tweetTwitterUserId" => $twitterUser->twitterUserId, "tweetContent" => $linkedTweet->text]);
-				$tweets[] = $newTweet;
+		$twitterUser = null;
+		$twitterData = json_decode(Twitter::getUserTimeline(["screen_name" => $tweetTwitterAtHandle, "format" => "json"]));
+		foreach($twitterData as $tweet) {
+			if($twitterUser === null) {
+				// create a fake database record for the finally block and then insert into mySQL
+				$twitterUser = new \stdClass();
+				$twitterUser->twitterUserId = $tweet->user->id_str;
+				TwitterUser::create(["twitterUserId" => $tweet->user->id_str, "twitterUserAtHandle" => $tweet->user->screen_name, "twitterUserImage" => $tweet->user->profile_image_url_https]);
 			}
-			dd($tweets);
-		} catch(Exception $exception) {
-			dd(Twitter::logs());
+
+			$linkedTweetContent = Twitter::linkify($tweet);
+			Tweet::create(["tweetId" => $tweet->id_str, "tweetTwitterUserId" => $tweet->user->id_str, "tweetContent" => $linkedTweetContent]);
 		}
 	} finally {
-		return Tweet::where("tweetTwitterUserId", $twitterUser->twitterUserId)->get();
+		return (Tweet::where("tweetTwitterUserId", $twitterUser->twitterUserId)->get());
 	}
 });
 
-Route::get("/tweet/{tweetTwitterUserId}", function($twitterUserId) {
+Route::get("/tweet/{tweetTwitterUserId}", function ($twitterUserId) {
 	return Tweet::where("tweetTwitterUserId", $twitterUserId)->get();
 });
 
-Route::post("/twitter-user", function(Request $request) {
+Route::post("/twitter-user", function (Request $request) {
 	TwitterUser::create($request->all());
 });

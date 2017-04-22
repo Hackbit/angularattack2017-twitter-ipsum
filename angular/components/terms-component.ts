@@ -1,3 +1,7 @@
-/**
- * Created by dbeets on 4/22/2017.
- */
+import {Component} from "@angular/core";
+
+@Component({
+	templateUrl: "./templates/terms.php"
+})
+
+export class TermsComponent {}

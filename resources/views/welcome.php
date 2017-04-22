@@ -4,7 +4,7 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">

@@ -1,4 +1,4 @@
- import {RouterModule, Routes} from "@angular/router";
+import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./components/home-component";
 import {ProfileComponent} from "./components/profile-component";
 import {PrivacyComponent} from "./components/privacy-component";

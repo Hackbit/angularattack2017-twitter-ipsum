@@ -10,4 +10,10 @@ class Ipsum extends Model
 	protected $primaryKey = 'ipsumId';
 	public $timestamps = false;
 
+	//state variables and getters/setters here?
+
+	public function store() {
+		$input = \Input::json();
+		//database insertion logic here
+	}
 }

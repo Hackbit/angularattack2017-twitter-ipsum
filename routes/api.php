@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Http\Request;
+include(__DIR__.'../app/Ipsum.php');
+include(__DIR__.'../app/Profile.php');
+include(__DIR__.'../app/Tweet.php');
+include(__DIR__.'../app/TwitterUser.php');
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +19,20 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::post('/ipsum', function () {
+	$ipsum = new Ipsum;
+	$ipsum->store();
 });
+
+//Route::get('/ipsum', function () {
+//
+//});
+//
+//Route::put('/ipsum', function () {
+//
+//});
+//
+//Route::delete('/ipsum', function () {
+//
+//});

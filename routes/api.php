@@ -29,17 +29,18 @@ Route::get('/ipsum', function () {
 	return Ipsum::take(25)->orderBy("ipsumDateTime", "DESC")->get();
 });
 
-Route::get('/ipsum/new/', function () {
-//	$twitterUserId = TwitterUser::where("twitterUserAtHandle", $twitterUserAtHandle)->first();
-//	$tweets = Tweet::where("tweetTwitterUserId", $twitterUserId);
-//	return $tweets;
+Route::get('/ipsum/new/{twitterUserAtHandle}', function ($twitterUserAtHandle) {
+	$twitterUser = TwitterUser::where("twitterUserAtHandle", $twitterUserAtHandle)->first();
+	$tweets = Tweet::where("tweetTwitterUserId", $twitterUser->twitterUserId)->get();
+	$tweetToShuffle = "";
+	foreach ($tweets as $tweetObject) {
+		$tweetToShuffle = $tweetToShuffle.$tweetObject->tweetContent." ";
+	}
 
-	$tweet = "Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.";
-	$tweetToShuffle = explode(" ", $tweet);
+	$tweetToShuffle = explode(" ", $tweetToShuffle);
 	shuffle($tweetToShuffle);
 	$ipsum = implode(" ", $tweetToShuffle);
 	return($ipsum);
-
 });
 
 Route::get('/ipsum/{profileId}', function($profileId) {

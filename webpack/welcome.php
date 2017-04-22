@@ -9,9 +9,10 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<base href="/" />
 		<title>Twitter Ipsum</title>
 	</head>
 	<body>
-		<h1>Twitter Ipsum</h1>
+		<twitter-ipsum-app>Loading&hellip;</twitter-ipsum-app>
 	</body>
 </html>

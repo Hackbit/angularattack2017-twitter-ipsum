@@ -64,12 +64,16 @@ Route::post("/tweet", function(Request $request) {
 	Tweet::create($request->all());
 });
 
-Route::get("/tweet/{tweetTwitterAtHandle}", function($tweetTwitterAtHandle) {
+Route::get("/tweetByTweetTwitterAtHandle/{tweetTwitterAtHandle}", function($tweetTwitterAtHandle) {
 	try {
-		$twitterUser = TwitterUser::where("tweetTwitterAtHandle", $tweetTwitterAtHandle)->firstOrFail();
+		$twitterUser = TwitterUser::where("TwitterUserAtHandle", $tweetTwitterAtHandle)->firstOrFail();
 	} catch(ModelNotFoundException $modelNotFoundException) {
-		$twitterData = Twitter::getUserTimeline(["screen_name" => $tweetTwitterAtHandle, "format" => "json"]);
-		dd($twitterData);
+		try {
+			$twitterData = Twitter::getUserTimeline(["screen_name" => $tweetTwitterAtHandle, "format" => "json"]);
+			dd($twitterData);
+		} catch(Exception $exception) {
+			dd(Twitter::logs());
+		}
 	} finally {
 		return Tweet::where("tweetTwitterUserId", $twitterUser->twitterUserId)->get();
 	}

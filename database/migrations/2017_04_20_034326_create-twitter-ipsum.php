@@ -11,11 +11,13 @@ class CreateTwitterIpsum extends Migration {
 			$table->string("profileAccessToken", 64);
 			$table->string("profileAtHandle", 32);
 			$table->string("profileEmail", 128);
+			$table->string("profileImage", 128);
 		});
 
 		Schema::create("twitterUser", function(Blueprint $table) {
 			$table->string("twitterUserId", 18);
 			$table->string("twitterUserAtHandle", 64);
+			$table->string("twitterUserImage", 128);
 			$table->primary("twitterUserId");
 		});
 

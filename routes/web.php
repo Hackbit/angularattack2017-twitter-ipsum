@@ -86,7 +86,7 @@ Route::get('twitter/success', ['as' => 'twitter.callback', function() {
 			// Auth::login($user) should do the trick.
 
 			Session::put('access_token', $token);
-			Profile::create(["profileAccessToken" => $token["oauth_token"], "profileAtHandle" => $credentials->screen_name, "profileEmail" => $credentials->email]);
+			Profile::create(["profileAccessToken" => $token["oauth_token"], "profileAtHandle" => $credentials->screen_name, "profileEmail" => $credentials->email, "profileImage" => $credentials->profile_image_url_https]);
 
 			return Redirect::to('/')->with('flash_notice', 'Congrats! You\'ve successfully signed in!');
 		}

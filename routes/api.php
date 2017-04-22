@@ -26,17 +26,8 @@ Route::post("/ipsum", function () {
 //Route::get('/ipsum', function () {
 //
 //});
-//
-//Route::put('/ipsum', function () {
-//
-//});
-//
-//Route::delete('/ipsum', function () {
-//
-//});
+
 
 Route::post("/profile", function (Request $request) {
-	$profile = Profile::create($request->all());
-
-	//$profile->save();
+	Profile::create($request->all());
 });

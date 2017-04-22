@@ -8,4 +8,6 @@ class Ipsum extends Model
 {
 	protected $table = 'ipsum';
 	protected $primaryKey = 'ipsumId';
+	public $timestamps = false;
+
 }

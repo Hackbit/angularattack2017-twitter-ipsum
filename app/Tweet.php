@@ -9,4 +9,6 @@ class Tweet extends Model
 	protected $table = 'tweet';
 	protected $primaryKey = 'tweetId';
 	public $incrementing = false;
+	public $timestamps = false;
+
 }

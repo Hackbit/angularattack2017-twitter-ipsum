@@ -8,5 +8,7 @@ class Profile extends Model
 {
 	protected $table = 'profile';
 	protected $primaryKey = 'profileId';
+	public $timestamps = false;
+
 
 }

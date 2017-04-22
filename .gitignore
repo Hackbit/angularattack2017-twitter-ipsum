@@ -4,7 +4,13 @@
 /public/hot
 /storage/*.key
 /vendor
+/.env
 /.idea
+/.sync-config.cson
 Homestead.json
 Homestead.yaml
-.env
+/angular/**/*.js
+/angular/**/*.js.map
+/public_html/dist
+/public_html/index.php
+/npm-debug.log

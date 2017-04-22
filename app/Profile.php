@@ -11,5 +11,5 @@ class Profile extends Model
 	protected $primaryKey = 'profileId';
 	public $timestamps = false;
 
-	protected $fillable = ['profileAccessToken', 'profileAtHandle', 'profileEmail'];
+	protected $fillable = ['profileAccessToken', 'profileAtHandle', 'profileEmail', 'profileImage'];
 }

@@ -10,10 +10,6 @@ class Ipsum extends Model
 	protected $primaryKey = 'ipsumId';
 	public $timestamps = false;
 
-	//state variables and getters/setters here?
+	protected $fillable = ['ipsumContent', 'ipsumProfileId'];
 
-	public function store() {
-		$input = \Input::json();
-		$input->save();
-	}
 }

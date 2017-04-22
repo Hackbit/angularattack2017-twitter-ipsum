@@ -19,15 +19,17 @@ use Illuminate\Http\Request;
 */
 
 
-Route::post("/ipsum", function () {
-	$ipsum = new Ipsum();
-	$ipsum->store();
+Route::post("/ipsum", function (Request $request) {
+	Ipsum::create($request->all());
 });
 
-//Route::get('/ipsum', function () {
-//
-//});
+Route::get('/ipsum', function () {
+	return Ipsum::take(25)->orderBy("ipsumDateTime", "DESC")->get();
+});
 
+Route::get('/ipsum/{profileId}', function($profileId) {
+	return Ipsum::where("ipsumProfileId", $profileId)->get();
+});
 
 Route::post("/profile", function (Request $request) {
 	Profile::create($request->all());

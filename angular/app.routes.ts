@@ -1,16 +1,16 @@
 import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./components/home-component";
 import {ProfileComponent} from "./components/profile-component";
-import {LegalComponent} from "./components/legal-component";
+import {PrivacyComponent} from "./components/privacy-component";
 import {TermsComponent} from "./components/terms-component";
 
-export const allAppComponents = [HomeComponent, ProfileComponent, LegalComponent, TermsComponent];
+export const allAppComponents = [HomeComponent, ProfileComponent, PrivacyComponent, TermsComponent];
 
 export const routes: Routes = [
 	{path: "profile", component: ProfileComponent},
-	{path: "", component: HomeComponent},
-	{path: "legal", component: LegalComponent},
-	{path: "terms", component: TermsComponent}
+	{path: "privacy", component: PrivacyComponent},
+	{path: "terms", component: TermsComponent},
+	{path: "", component: HomeComponent}
 ];
 
 export const appRoutingProviders: any[] = [];

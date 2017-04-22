@@ -1,1 +1,0 @@
-<h1>Legal Component</h1>

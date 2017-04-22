@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::get('/profile', function () {
 	return view('welcome');
 });
-Route::get('/legal', function () {
+Route::get('/privacy', function () {
 	return view('welcome');
 });
 Route::get('/terms', function () {

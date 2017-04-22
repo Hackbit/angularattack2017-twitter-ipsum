@@ -72,7 +72,7 @@ Route::get('twitter/success', ['as' => 'twitter.callback', function() {
 			return Redirect::route('twitter.login')->with('flash_error', 'We could not log you in on Twitter.');
 		}
 
-		$credentials = Twitter::getCredentials();
+		$credentials = Twitter::getCredentials(['include_email' => 'true']);
 
 		if (is_object($credentials) && !isset($credentials->error))
 		{
@@ -85,8 +85,9 @@ Route::get('twitter/success', ['as' => 'twitter.callback', function() {
 			// Auth::login($user) should do the trick.
 
 			Session::put('access_token', $token);
-
-			return Redirect::to('/')->with('flash_notice', 'Congrats! You\'ve successfully signed in!');
+//			dd($token);
+			dd($credentials);
+			//return Redirect::to('/')->with('flash_notice', 'Congrats! You\'ve successfully signed in!');
 		}
 
 		return Redirect::route('twitter.error')->with('flash_error', 'Crab! Something went wrong while signing you up!');

@@ -1,10 +1,7 @@
 <?php
 
+use App\Ipsum;
 use Illuminate\Http\Request;
-include(__DIR__.'../app/Ipsum.php');
-include(__DIR__.'../app/Profile.php');
-include(__DIR__.'../app/Tweet.php');
-include(__DIR__.'../app/TwitterUser.php');
 
 
 
@@ -20,8 +17,8 @@ include(__DIR__.'../app/TwitterUser.php');
 */
 
 
-Route::post('/ipsum', function () {
-	$ipsum = new Ipsum;
+Route::post("/ipsum", function () {
+	$ipsum = new Ipsum();
 	$ipsum->store();
 });
 

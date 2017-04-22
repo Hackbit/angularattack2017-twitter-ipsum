@@ -11,9 +11,15 @@ class Profile extends Model
 	protected $primaryKey = 'profileId';
 	public $timestamps = false;
 
+	private $profileAccessToken;
+	private $profileAtHandle;
+	private $profileEmail;
+
 
 	public function store(Request $request) {
-		dd($request);
+		$this->profileAccessToken = $request->input("profileAccessToken");
+		$this->profileAtHandle = $request->input("profileAtHandle");
+		$this->profileEmail = $request->input("profileEmail");
 		$this->save();
 	}
 

@@ -1,5 +1,6 @@
 /********************
 Twitter Ipsum CSS Styles
+Angular Attack 2017!
 @dbeetz, @dmcdonald, @bbrown, @actordie
  ********************/
 
@@ -9,7 +10,7 @@ Twitter Ipsum CSS Styles
 #navbar-main {
 	@navbar-height: 75px;
 	@navbar-padding-vertical: 0;
-
+	height: 75px;
 }
 
 .navbar-default {
@@ -18,6 +19,10 @@ Twitter Ipsum CSS Styles
 
 body {
 	font-family: Arial, sans-serif;
-	color: blue;
-	background-color: blue;
+}
+
+/* Splash Page */
+.main-search {
+	margin-top: 15px;
+	margin-bottom: 15px;
 }

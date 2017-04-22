@@ -35,7 +35,10 @@
 			<div class="col-xs-8 col-xs-offset-2">
 				<div class="well well-lg ipsum-well">
 					<div class="at-handle pull-left">
-						<h4>@realDonaldTrump</h4>
+						<img src="../images/kitties49x49.png" alt="KITTIES!">
+					</div>
+					<div class="at-handle pull-left">
+						<h3>@realDonaldTrump</h3>
 					</div>
 					<button type="button" class="btn btn-default copy-button pull-right">Copy +</button>
 					<br/>

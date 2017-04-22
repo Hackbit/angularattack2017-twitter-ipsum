@@ -1,7 +1,7 @@
 <div align="center">
 	<div class="row">
 		<div class="col-xs-4 col-xs-offset-4">
-			<div class="well well-lg">
+			<div class="well well-lg ipsum-well">
 				<h3>@profileAtHandle</h3>
 				<h3>profileEmail</h3>
 			</div>
@@ -12,7 +12,10 @@
 	<div class="col-xs-8 col-xs-offset-2">
 		<div class="well well-lg ipsum-well">
 			<div class="at-handle pull-left">
-				<h4>@twitterUserAtHandle</h4>
+				<img src="../images/kitties49x49.png" alt="KITTIES!">
+			</div>
+			<div class="at-handle pull-left">
+				<h3>@realDonaldTrump</h3>
 			</div>
 			<button type="button" class="btn btn-default copy-button pull-right">Copy +</button>
 			<br/>
@@ -33,7 +36,10 @@
 	<div class="col-xs-8 col-xs-offset-2">
 		<div class="well well-lg ipsum-well">
 			<div class="at-handle pull-left">
-				<h4>@twitterUserAtHandle</h4>
+				<img src="../images/kitties49x49.png" alt="KITTIES!">
+			</div>
+			<div class="at-handle pull-left">
+				<h3>@realDonaldTrump</h3>
 			</div>
 			<button type="button" class="btn btn-default copy-button pull-right">Copy +</button>
 			<br/>

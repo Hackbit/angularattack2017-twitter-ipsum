@@ -40,10 +40,12 @@ button:active {
 	@navbar-height: 75px;
 	@navbar-padding-vertical: 0;
 	height: 75px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .navbar-default {
 	background-color: white;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 /**********
@@ -53,20 +55,19 @@ Splash Page
 .main-search {
 	margin-top: 25px;
 	margin-bottom: 25px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .ipsum-well {
 	margin-top: 25px;
 	margin-bottom: 25px;
+	background-color: white;
+	padding: 25px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .ipsum-text {
 	text-align: left;
-}
-
-.ipsum-well {
-	background-color: white;
-	padding: 25px;
 }
 
 button.btn-default {
@@ -75,6 +76,7 @@ button.btn-default {
 
 button.btn-default:hover {
 	background-color: white;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 a:link, a:visited {

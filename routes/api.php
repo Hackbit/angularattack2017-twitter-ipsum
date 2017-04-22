@@ -1,6 +1,7 @@
 <?php
 
 use App\Ipsum;
+use App\Profile;
 use Illuminate\Http\Request;
 
 
@@ -33,3 +34,8 @@ Route::post("/ipsum", function () {
 //Route::delete('/ipsum', function () {
 //
 //});
+
+Route::post("/profile", function () {
+	$profile = new Profile();
+	$profile->store();
+});

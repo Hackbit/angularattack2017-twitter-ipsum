@@ -32,7 +32,7 @@ class CreateTwitterIpsum extends Migration {
 		Schema::create("tweet", function(Blueprint $table) {
 			$table->string("tweetId", 18);
 			$table->string("tweetTwitterUserId", 18);
-			$table->string("tweetContent", 255);
+			$table->string("tweetContent", 2048);
 			$table->foreign("tweetTwitterUserId")->references("twitterUserId")->on("twitterUser");
 			$table->primary("tweetId");
 		});

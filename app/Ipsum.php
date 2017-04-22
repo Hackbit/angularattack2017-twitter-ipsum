@@ -14,6 +14,6 @@ class Ipsum extends Model
 
 	public function store() {
 		$input = \Input::json();
-		//database insertion logic here
+		$input->save();
 	}
 }

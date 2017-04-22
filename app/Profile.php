@@ -12,8 +12,8 @@ class Profile extends Model
 
 
 	public function store() {
-		$input = \Input::json();
-		$input->save();
+		$input = \Request::json();
+		$this->save();
 	}
 
 }

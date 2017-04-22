@@ -54,7 +54,8 @@ Route::get("/tweet/{tweetTwitterAtHandle}", function($tweetTwitterAtHandle) {
 	try {
 		$twitterUser = TwitterUser::where("tweetTwitterAtHandle", $tweetTwitterAtHandle)->firstOrFail();
 	} catch(ModelNotFoundException $modelNotFoundException) {
-
+		$twitterData = Twitter::getUserTimeline(["screen_name" => $tweetTwitterAtHandle, "format" => "json"]);
+		dd($twitterData);
 	} finally {
 		return Tweet::where("tweetTwitterUserId", $twitterUser->twitterUserId)->get();
 	}

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ipsum extends Model
 {
-    //
+	protected $table = 'ipsum';
 }

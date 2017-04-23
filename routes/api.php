@@ -77,8 +77,22 @@ Route::get('/ipsum', function () {
 	return(response(json_encode($reply))->header("Content-type", "application/json"));
 });
 
-Route::get('/ipsum/{profileId}', function ($profileId) {
-	return Ipsum::where("ipsumProfileId", $profileId)->get();
+Route::get('/ipsum/{profileId}', function (Request $request) {
+	try {
+		$reply = new stdClass();
+		$reply->data = [];
+		$reply->status = 200;
+
+		if(($request->session()->has("profile")) === false) {
+			throw(new RuntimeException("You are not logged in. Please login with Twitter."));
+		}
+		$reply->data = Ipsum::where("ipsumProfileId", $request->session()->get("profile")->profileId)->get();
+	} catch(\Exception $exception) {
+		$reply->status = $exception->getCode();
+		$reply->message = $exception->getMessage();
+	} finally {
+		return(response(json_encode($reply))->header("Content-type", "application/json"));
+	}
 });
 
 route::get('/ipsum/at-handle/{profileAtHandle}', function ($profileAtHandle) {

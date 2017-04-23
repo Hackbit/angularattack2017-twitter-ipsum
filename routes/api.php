@@ -35,14 +35,21 @@ Route::post("/ipsum", function (Request $request) {
 	$tweetToShuffle = explode(" ", $tweetToShuffle);
 	shuffle($tweetToShuffle);
 	$ipsum = implode(" ", $tweetToShuffle);
-	Ipsum::create(["ipsumProfileId" => Session::get("profileId"), "ipsumContent" => $ipsum]);
+	Ipsum::create(["ipsumProfileId" => Session::get("profileId"), "ipsumTwitterUserId" => $twitterUser->twitterUserId, "ipsumContent" => $ipsum]);
 });
 
 Route::get('/ipsum', function () {
 	$reply = new stdClass();
-	$reply->data = Ipsum::take(25)->orderBy("ipsumDateTime", "DESC")->get();
+
+	$result = [];
+	$ipsums = Ipsum::take(25)->orderBy("ipsumDateTime", "DESC")->get();
+	foreach($ipsums as $ipsum) {
+		$twitterUser = TwitterUser::where("twitterUserId", $ipsum->ipsumTwitterUserId)->first();
+		$result[] = ["ipsum" => $ipsum, "twitterUser" => $twitterUser];
+	}
+	$reply->data = $result;
 	$reply->status = 200;
-	return json_encode($reply);
+	return(response(json_encode($reply))->header("Content-type", "application/json"));
 });
 
 Route::get('/ipsum/{profileId}', function ($profileId) {

@@ -3,7 +3,6 @@ import {Http} from "@angular/http";
 import {BaseService} from "./base-service";
 import {Status} from "../classes/status";
 import {Observable} from "rxjs/Observable";
-import {TwitterUser} from "../classes/twitter-user";
 
 
 @Injectable ()
@@ -12,10 +11,12 @@ export class AutocompleteService extends BaseService {
 		super(http);
 	}
 
-	private twitterSearchUrl = 'users/search';
+	private twitterSearchUrl = 'users/search'; //need full url
 
 	fetchUserNames(searchString : string) : Observable<Status> {
-		return(this.http.post(this.twitterSearchUrl, searchString) //shouldn't be a post? Need to send as query params instead
+		let searchArray: string[] = [];
+		searchArray["q"] = searchString;
+		return(this.http.get(this.twitterSearchUrl, [searchString])
 			.map(BaseService.extractMessage)
 			.catch(BaseService.handleError));
 	}

@@ -55,6 +55,12 @@ Route::post("/ipsum", function (Request $request) {
 	shuffle($tweetToShuffle);
 	$ipsum = implode(" ", $tweetToShuffle);
 	Ipsum::create(["ipsumProfileId" => $request->session()->get("profile")->profileId, "ipsumTwitterUserId" => $twitterUser->twitterUserId, "ipsumContent" => $ipsum]);
+
+	// return a reply
+	$reply = new stdClass();
+	$reply->message = "Ipsum successfully created.";
+	$reply->status = 200;
+	return(response(json_encode($reply))->header("Content-type", "application/json"));
 });
 
 Route::get('/ipsum', function () {

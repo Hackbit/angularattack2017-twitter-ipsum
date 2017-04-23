@@ -11,11 +11,11 @@
 <div class="row">
 	<div class="col-xs-8 col-xs-offset-2">
 		<div class="well well-lg ipsum-well">
-			<div class="at-handle pull-left">
+			<div class="pull-left">
 				<img src="../images/kitties49x49.png" alt="KITTIES!">
 			</div>
 			<div class="at-handle pull-left">
-				<h3>@realDonaldTrump</h3>
+				<p> @realDonaldTrump</p>
 			</div>
 			<button type="button" class="btn btn-default copy-button pull-right">Copy +</button>
 			<br/>
@@ -35,11 +35,11 @@
 <div class="row">
 	<div class="col-xs-8 col-xs-offset-2">
 		<div class="well well-lg ipsum-well">
-			<div class="at-handle pull-left">
+			<div class="pull-left">
 				<img src="../images/kitties49x49.png" alt="KITTIES!">
 			</div>
 			<div class="at-handle pull-left">
-				<h3>@realDonaldTrump</h3>
+				<p> @realDonaldTrump</p>
 			</div>
 			<button type="button" class="btn btn-default copy-button pull-right">Copy +</button>
 			<br/>

@@ -15,6 +15,11 @@ body {
 	background-color: #4C94DD;
 }
 
+.white-text {
+	font-weight: bold;
+	color: white;
+}
+
 /* I Love Smooth Transitions! */
 a,
 a:link,
@@ -52,6 +57,10 @@ button:active {
 	color: #001B65;
 }
 
+.navbar-default .navbar-nav:hover > li > a {
+	color: #50c3ff;
+}
+
 /**********
 Splash Page
 ***********/
@@ -76,20 +85,27 @@ Splash Page
 
 button.btn-default {
 	background-color: #65bdff;
+	font-weight: bold;
+	color: white;
 }
 
 button.btn-default:hover {
-	background-color: #A4CAED;
+	background-color: white;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 a:link, a:visited {
-	color: #A4CAED;
+	background-color: white;
 	text-decoration: none;
 }
 
 a:link:active, a:visited:active {
-	color: #A4CAED;
+	background-color: white;
+}
+
+.at-handle {
+	margin-left: 10px;
+	font-size: 2.0em;
 }
 
 /* Media Queries */

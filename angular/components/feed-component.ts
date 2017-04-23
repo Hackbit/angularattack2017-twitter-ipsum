@@ -1,13 +1,12 @@
 import {Component,OnInit} from "@angular/core";
 import {IpsumService} from "../services/ipsum-service";
-import {Ipsum} from "../classes/ipsum";
 
 @Component({
 	templateUrl: "./templates/feed.php"
 })
 
 export class FeedComponent implements OnInit {
-	ipsums : Ipsum[] = [];
+	ipsums : any[] = [];
 
 	constructor(private ipsumService: IpsumService) {}
 

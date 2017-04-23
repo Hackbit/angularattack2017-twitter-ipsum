@@ -86,7 +86,13 @@ Route::get('/ipsum/{profileId}', function (Request $request) {
 		if(($request->session()->has("profile")) === false) {
 			throw(new RuntimeException("You are not logged in. Please login with Twitter."));
 		}
-		$reply->data = Ipsum::where("ipsumProfileId", $request->session()->get("profile")->profileId)->get();
+		$result = [];
+		$ipsums = Ipsum::where("ipsumProfileId", $request->session()->get("profile")->profileId)->get();
+		foreach($ipsums as $ipsum) {
+			$twitterUser = TwitterUser::where("twitterUserId", $ipsum->ipsumTwitterUserId)->first();
+			$result[] = ["ipsum" => $ipsum, "twitterUser" => $twitterUser];
+		}
+		$reply->data = $result;
 	} catch(\Exception $exception) {
 		$reply->status = $exception->getCode();
 		$reply->message = $exception->getMessage();

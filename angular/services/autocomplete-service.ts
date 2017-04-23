@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {BaseService} from "./base-service";
-import {Status} from "../classes/status";
 import {Observable} from "rxjs/Observable";
 
 
@@ -13,9 +12,9 @@ export class AutocompleteService extends BaseService {
 
 	private twitterSearchUrl = '/api/twitter-users/';
 
-	fetchUserNames(searchString : string) : Observable<Status> {
+	fetchUserNames(searchString : string) : Observable<any> {
 		return(this.http.get(this.twitterSearchUrl + searchString)
-			.map(BaseService.extractMessage)
+			.map(BaseService.extractData)
 			.catch(BaseService.handleError));
 	}
 }

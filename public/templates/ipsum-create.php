@@ -5,7 +5,8 @@
 			<div class="input-group main-search">
 				<span class="input-group-addon" id="at-add-on">@</span>
 				<input type="text" name="twitterUserAtHandle" class="form-control" placeholder="realDonaldTrump" required maxlength="32"
-						 [(ngModel)]="newIpsumRequest.twitterUserAtHandle" #twitterUserAtHandle="ngModel"/>
+						 [(ngModel)]="newIpsumRequest.twitterUserAtHandle" #twitterUserAtHandle="ngModel"
+						 ng2-auto-complete [source]="userNames" [min-chars]="3" (keypress)="getAutocompleteNames()"/>
 				<span class="input-group-btn">
 				<button [disabled]="ipsumCreateForm.invalid" class="btn btn-default" type="submit">Generate!</button>
 			</span>

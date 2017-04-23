@@ -117,6 +117,8 @@ Route::get("/tweet/{tweetTwitterUserId}", function ($twitterUserId) {
 });
 
 Route::get("/twitter-users/{searchString}", function ($searchString){
-	$twitterUsers = Twitter::getUsersSearch(["q" => $searchString, "page" => 1, "count" => 20]);
-	return $twitterUsers;
+	$reply = new stdClass();
+	$reply->status = 200;
+	$reply->data = Twitter::getUsersSearch(["q" => $searchString, "page" => 1, "count" => 20]);
+	return(response(json_encode($reply))->header("Content-type", "application/json"));
 });

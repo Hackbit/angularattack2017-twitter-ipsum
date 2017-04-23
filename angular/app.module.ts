@@ -7,6 +7,7 @@ import {allAppComponents, appRoutingProviders, routing} from "./app.routes";
 import {IpsumService} from "./services/ipsum-service";
 import {ClipboardModule} from "ngx-clipboard";
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import {AutocompleteService} from "./services/autocomplete-service";
 
 
 const moduleDeclarations = [AppComponent];
@@ -15,6 +16,6 @@ const moduleDeclarations = [AppComponent];
 	imports:      [BrowserModule, FormsModule, HttpModule, ClipboardModule, Ng2AutoCompleteModule, routing],
 	declarations: [...moduleDeclarations, ...allAppComponents],
 	bootstrap:    [AppComponent],
-	providers:    [appRoutingProviders, IpsumService]
+	providers:    [appRoutingProviders, IpsumService, AutocompleteService]
 })
 export class AppModule {}

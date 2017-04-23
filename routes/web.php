@@ -1,6 +1,7 @@
 <?php
 use App\Profile;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,8 +87,18 @@ Route::get('twitter/success', ['as' => 'twitter.callback', function() {
 			// Auth::login($user) should do the trick.
 
 			Session::put('access_token', $token);
-			Profile::create(["profileAccessToken" => $token["oauth_token"], "profileAtHandle" => $credentials->screen_name, "profileEmail" => $credentials->email, "profileImage" => $credentials->profile_image_url_https]);
+			$profile = null;
+			try {
+				$profile = Profile::where("profileAtHandle", $credentials->screen_name)->firstOrFail()->get();
+			} catch(ModelNotFoundException $modelNotFoundException) {
+				Profile::create(["profileAccessToken" => $token["oauth_token"], "profileAtHandle" => $credentials->screen_name, "profileEmail" => $credentials->email, "profileImage" => $credentials->profile_image_url_https]);
+			} finally {
+				if($profile === null) {
+					$profile = Profile::where("profileAtHandle", $credentials->screen_name)->first()->get();
+				}
+			}
 
+			Session::put("profileId", $profile->profileId);
 			return Redirect::to('/')->with('flash_notice', 'Congrats! You\'ve successfully signed in!');
 		}
 

@@ -3,7 +3,7 @@ import {HomeComponent} from "./components/home-component";
 import {ProfileComponent} from "./components/profile-component";
 import {PrivacyComponent} from "./components/privacy-component";
 import {TermsComponent} from "./components/terms-component";
-import (FeedComponent) from "./components/feed-component";
+import {FeedComponent} from "./components/feed-component";
 
 export const allAppComponents = [HomeComponent, ProfileComponent, PrivacyComponent, TermsComponent, FeedComponent];
 

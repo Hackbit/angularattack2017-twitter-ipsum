@@ -39,9 +39,7 @@ Route::post("/ipsum", function (Request $request) {
 				$twitterUser->twitterUserId = $tweet->user->id_str;
 				TwitterUser::create(["twitterUserId" => $tweet->user->id_str, "twitterUserAtHandle" => $tweet->user->screen_name, "twitterUserImage" => $tweet->user->profile_image_url_https]);
 			}
-
-			$linkedTweetContent = Twitter::linkify($tweet);
-			Tweet::create(["tweetId" => $tweet->id_str, "tweetTwitterUserId" => $tweet->user->id_str, "tweetContent" => $linkedTweetContent]);
+			Tweet::create(["tweetId" => $tweet->id_str, "tweetTwitterUserId" => $tweet->user->id_str, "tweetContent" => $tweet->text]);
 		}
 	}
 

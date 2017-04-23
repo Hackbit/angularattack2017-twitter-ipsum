@@ -4,4 +4,8 @@ import {Component} from "@angular/core";
 	templateUrl: "./templates/home.php"
 })
 
-export class HomeComponent {}
+export class HomeComponent {
+	public myData: string;
+	public mySource = ['James T. Kirk', 'Benjamin Sisko', 'Jean-Luc Picard', 'Spock', 'Jonathan Archer', 'Hikaru Sulu', 'Christopher Pike', 'Rachel Garrett' ];
+
+}

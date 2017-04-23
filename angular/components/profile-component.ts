@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {IpsumService} from "../services/ipsum-service";
+import {Status} from "../classes/status";
 
 @Component({
 	templateUrl: "./templates/profile.php"
@@ -12,6 +13,14 @@ export class ProfileComponent implements OnInit {
 
 	ngOnInit() : void {
 		this.getIpsumByProfileId();
+	}
+
+	ipsumUpdate(status : Status) : void {
+		console.log("status: " + status);
+		if(status.status === 200) {
+			this.ipsums = [];
+			this.getIpsumByProfileId();
+		}
 	}
 
 	getIpsumByProfileId() : void {

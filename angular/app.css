@@ -65,8 +65,13 @@ button:active {
 	left: 50%;
 	position: relative;
 	transform: translateX(-50%);
+	margin: 5px;
 }
 
+.navbar-brand {
+	vertical-align: middle;
+	padding: 0;
+}
 /**********
 Splash Page
 ***********/

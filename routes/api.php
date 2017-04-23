@@ -21,21 +21,19 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 Route::post("/ipsum", function (Request $request) {
-	$twitterUser = TwitterUser::where("twitterUserAtHandle", $twitterUserAtHandle)->first();
+	$requestObject = $request->json();
+	$twitterUser = TwitterUser::where("twitterUserAtHandle", $requestObject->get("twitterUserAtHandle"))->first();
 	$tweets = Tweet::where("tweetTwitterUserId", $twitterUser->twitterUserId)->get();
 	$tweetToShuffle = "";
 	foreach($tweets as $tweetObject) {
 		$tweetToShuffle = $tweetToShuffle . $tweetObject->tweetContent . " ";
-
-//		if($tweetObject !== end($tweets)) {
-//			$tweetToShuffle = $tweetToShuffle." ";
-//		}
 	}
 
 	$tweetToShuffle = explode(" ", $tweetToShuffle);
 	shuffle($tweetToShuffle);
 	$ipsum = implode(" ", $tweetToShuffle);
-	Ipsum::create($request->all());
+	dd($ipsum);
+	Ipsum::create(["ipsumProfileId" => 1, "ipsumContent" => $ipsum]);
 });
 
 Route::get('/ipsum', function () {

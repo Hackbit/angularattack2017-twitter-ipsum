@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 Route::post("/ipsum", function (Request $request) {
-	if(empty(Session::get("profileId")) === true) {
+	if(($request->session()->has("profile")) === false) {
 		throw(new RuntimeException("You are not logged in. Please login with Twitter."));
 	}
 	$requestObject = $request->json();

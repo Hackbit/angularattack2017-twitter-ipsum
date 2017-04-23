@@ -101,7 +101,7 @@ Route::get('twitter/success', ['as' => 'twitter.callback', function() {
 				}
 			}
 
-			Session::put("profileId", $profile->profileId);
+			session(["profile" => $profile]);
 			return Redirect::to('/')->with('flash_notice', 'Congrats! You\'ve successfully signed in!');
 		}
 

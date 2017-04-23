@@ -2,6 +2,16 @@
 if(session_status() !== PHP_SESSION_ACTIVE) {
 	session_start();
 }
+
+if(empty(session("profile")) === false) {
+	$laravelProfile = session("profile");
+	$genericProfile = new stdClass();
+	$genericProfile->profileId = $laravelProfile->profileId;
+	$genericProfile->profileAtHandle = $laravelProfile->profileAtHandle;
+	$_SESSION["profile"] = $genericProfile;
+} else {
+	$_SESSION["profile"] = null;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

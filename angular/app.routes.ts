@@ -5,8 +5,9 @@ import {PrivacyComponent} from "./components/privacy-component";
 import {TermsComponent} from "./components/terms-component";
 import {FeedComponent} from "./components/feed-component";
 import {IpsumComponent} from "./components/ipsum-component";
+import {IpsumCreateComponent} from "./components/ipsum-create-component";
 
-export const allAppComponents = [HomeComponent, ProfileComponent, PrivacyComponent, TermsComponent, FeedComponent, IpsumComponent];
+export const allAppComponents = [HomeComponent, ProfileComponent, PrivacyComponent, TermsComponent, FeedComponent, IpsumComponent, IpsumCreateComponent];
 
 export const routes: Routes = [
 	{path: "profile", component: ProfileComponent},

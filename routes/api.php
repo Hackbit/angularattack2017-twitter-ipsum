@@ -21,6 +21,9 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 Route::post("/ipsum", function (Request $request) {
+	if(empty(Session::get("profileId")) === true) {
+		throw(new RuntimeException("You are not logged in. Please login with Twitter."));
+	}
 	$requestObject = $request->json();
 	$twitterUser = TwitterUser::where("twitterUserAtHandle", $requestObject->get("twitterUserAtHandle"))->first();
 	$tweets = Tweet::where("tweetTwitterUserId", $twitterUser->twitterUserId)->get();
@@ -32,8 +35,7 @@ Route::post("/ipsum", function (Request $request) {
 	$tweetToShuffle = explode(" ", $tweetToShuffle);
 	shuffle($tweetToShuffle);
 	$ipsum = implode(" ", $tweetToShuffle);
-	dd($ipsum);
-	Ipsum::create(["ipsumProfileId" => 1, "ipsumContent" => $ipsum]);
+	Ipsum::create(["ipsumProfileId" => Session::get("profileId"), "ipsumContent" => $ipsum]);
 });
 
 Route::get('/ipsum', function () {

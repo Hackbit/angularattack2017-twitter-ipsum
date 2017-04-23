@@ -30,6 +30,9 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 				<li><a routerLink="profile">Your Feed</a></li>
 				<?php } ?>
 			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a routerLink="feed">Live Feed</a></li>
+			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 </nav>

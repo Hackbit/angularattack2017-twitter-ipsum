@@ -24,9 +24,11 @@ class CreateTwitterIpsum extends Migration {
 		Schema::create("ipsum", function(Blueprint $table) {
 			$table->increments("ipsumId");
 			$table->integer("ipsumProfileId")->unsigned();
+			$table->string("ipsumTwitterUserId", 18);
 			$table->string("ipsumContent", 7500);
 			$table->timestamp("ipsumDateTime");
 			$table->foreign("ipsumProfileId")->references("profileId")->on("profile");
+			$table->foreign("ipsumTwitterUserId")->references("twitterUserId")->on("twitterUser");
 		});
 
 		Schema::create("tweet", function(Blueprint $table) {

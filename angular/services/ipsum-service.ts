@@ -25,7 +25,7 @@ export class IpsumService extends BaseService {
 			.map(BaseService.extractData)
 			.catch(BaseService.handleError));
 	}
-	getIpsumByProfileId(profileId : number) : Observable<Ipsum[]> {
+	getIpsumByProfileId(profileId : number) : Observable<any[]> {
 		return(this.http.get(this.ipsumUrl + "/" + profileId)
 			.map(BaseService.extractData)
 			.catch(BaseService.handleError));

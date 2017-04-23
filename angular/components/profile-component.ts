@@ -1,5 +1,4 @@
 import {Component, OnInit} from "@angular/core";
-import {Ipsum} from "../classes/ipsum";
 import {IpsumService} from "../services/ipsum-service";
 
 @Component({
@@ -7,7 +6,7 @@ import {IpsumService} from "../services/ipsum-service";
 })
 
 export class ProfileComponent implements OnInit {
-	ipsums : Ipsum[] = [];
+	ipsums : any[] = [];
 
 	constructor(private ipsumService: IpsumService) {}
 

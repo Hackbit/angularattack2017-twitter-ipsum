@@ -10,9 +10,13 @@ class Ipsum extends Model
 	protected $primaryKey = "ipsumId";
 	public $timestamps = false;
 
-	protected $fillable = ["ipsumContent", "ipsumProfileId"];
+	protected $fillable = ["ipsumContent", "ipsumTwitterUserId", "ipsumProfileId"];
 
 	public function profile() {
 		return($this->belongsTo("App\\Profile", "profileId"));
+	}
+
+	public function twitterUser() {
+		return($this->belongsTo("App\\TwitterUser", "twitterUserId"));
 	}
 }

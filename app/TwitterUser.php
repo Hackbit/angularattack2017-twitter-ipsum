@@ -13,6 +13,10 @@ class TwitterUser extends Model
 
 	protected $fillable = ["twitterUserId", "twitterUserAtHandle", "twitterUserImage"];
 
+	public function ipsum() {
+		return($this->hasMany("App\\Ipsum", "ipsumTwitterUserId"));
+	}
+
 	public function tweet() {
 		return($this->hasMany("App\\Tweet", "tweetTwitterUserId"));
 	}

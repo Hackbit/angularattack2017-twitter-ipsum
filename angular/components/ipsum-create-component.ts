@@ -22,9 +22,9 @@ export class IpsumCreateComponent {
 
 	constructor(private ipsumService: IpsumService, private autocompleteService: AutocompleteService) {
 		this.twitterUserAtHandleSubject
-			.debounceTime(1000)
+			.debounceTime(200)
 			.distinctUntilChanged()
-			.flatMap(search => Observable.of(search).delay(500))
+			.flatMap(search => Observable.of(search))
 			.subscribe(() => this.getAutocompleteNames());
 	}
 
@@ -37,10 +37,8 @@ export class IpsumCreateComponent {
 
 	getAutocompleteNames() : void {
 		if (this.newIpsumRequest.twitterUserAtHandle !== null && this.newIpsumRequest.twitterUserAtHandle !== "") {
-			this.autocompleteService.fetchUserNames(this.newIpsumRequest.twitterUserAtHandle).subscribe(userData => {
-				this.userNames = [];
-				userData.map((result: any) => this.userNames.push(result.screen_name));
-			});
+			this.autocompleteService.fetchUserNames(this.newIpsumRequest.twitterUserAtHandle)
+				.subscribe(userData => this.userNames = userData.map((result: any) => result.screen_name));
 		}
 	}
 }

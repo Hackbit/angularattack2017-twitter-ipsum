@@ -11,12 +11,10 @@ export class AutocompleteService extends BaseService {
 		super(http);
 	}
 
-	private twitterSearchUrl = 'users/search'; //need full url
+	private twitterSearchUrl = '/api/twitter-users/';
 
 	fetchUserNames(searchString : string) : Observable<Status> {
-		let searchArray: string[] = [];
-		searchArray["q"] = searchString;
-		return(this.http.get(this.twitterSearchUrl, [searchString])
+		return(this.http.get(this.twitterSearchUrl + searchString)
 			.map(BaseService.extractMessage)
 			.catch(BaseService.handleError));
 	}

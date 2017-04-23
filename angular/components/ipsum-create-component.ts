@@ -11,14 +11,14 @@ import {Status} from "../classes/status";
 export class IpsumCreateComponent {
 	newIpsumRequest : IpsumRequest = new IpsumRequest(null);
 	status : Status = null;
-	@Output() ipsumCreated = new EventEmitter<Status>();
+	@Output() ipsumCreated : EventEmitter<Status> = new EventEmitter<Status>();
 
 	constructor(private ipsumService: IpsumService) {}
 
 	createIpsum() : void {
 		this.ipsumService.createIpsum(this.newIpsumRequest).subscribe(status => {
 			this.status = status;
-			this.ipsumCreated.emit(status);
+			this.ipsumCreated.emit(this.status);
 		});
 	}
 }

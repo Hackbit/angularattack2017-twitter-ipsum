@@ -16,7 +16,6 @@ export class ProfileComponent implements OnInit {
 	}
 
 	ipsumUpdate(status : Status) : void {
-		console.log("status: " + status);
 		if(status.status === 200) {
 			this.ipsums = [];
 			this.getIpsumByProfileId();

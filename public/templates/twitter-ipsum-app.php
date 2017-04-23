@@ -14,7 +14,7 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a routerLink="twitter/oauth"><i class="fa fa-twitter" aria-hidden="true"></i> Connect With Twitter</a></li>
+				<li><a href="/twitter/oauth"><i class="fa fa-twitter" aria-hidden="true"></i> Connect With Twitter</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->

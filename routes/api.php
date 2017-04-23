@@ -116,6 +116,10 @@ Route::get("/tweet/{tweetTwitterUserId}", function ($twitterUserId) {
 	return Tweet::where("tweetTwitterUserId", $twitterUserId)->get();
 });
 
-Route::get("/twitter-users", function (){
-	return Twitter::getUsersSearch(["q" => "w"]);
-});
+//Route::get("/twitter-users", function (){
+//	$twitterUsers = [];
+//	for($i = 1; $i <= 5; $i++) {
+//		$twitterUsers[] = Twitter::getUsersSearch(["q" => "d", "page" => $i, "count" => 20]);
+//	}
+//	return $twitterUsers;
+//});

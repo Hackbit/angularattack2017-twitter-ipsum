@@ -97,3 +97,7 @@ Route::get("profile/{id}", function ($id) {
 Route::get("/tweet/{tweetTwitterUserId}", function ($twitterUserId) {
 	return Tweet::where("tweetTwitterUserId", $twitterUserId)->get();
 });
+
+Route::get("/twitter-users", function (){
+	return Twitter::getUsersSearch(["q" => "w"]);
+});

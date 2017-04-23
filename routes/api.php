@@ -39,7 +39,10 @@ Route::post("/ipsum", function (Request $request) {
 });
 
 Route::get('/ipsum', function () {
-	return Ipsum::take(25)->orderBy("ipsumDateTime", "DESC")->get();
+	$reply = new stdClass();
+	$reply->data = Ipsum::take(25)->orderBy("ipsumDateTime", "DESC")->get();
+	$reply->status = 200;
+	return json_encode($reply);
 });
 
 Route::get('/ipsum/{profileId}', function ($profileId) {

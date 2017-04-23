@@ -21,25 +21,25 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 Route::post("/ipsum", function (Request $request) {
-	Ipsum::create($request->all());
-});
-
-Route::get('/ipsum', function () {
-	return Ipsum::take(25)->orderBy("ipsumDateTime", "DESC")->get();
-});
-
-Route::get('/ipsum/new/{twitterUserAtHandle}', function ($twitterUserAtHandle) {
 	$twitterUser = TwitterUser::where("twitterUserAtHandle", $twitterUserAtHandle)->first();
 	$tweets = Tweet::where("tweetTwitterUserId", $twitterUser->twitterUserId)->get();
 	$tweetToShuffle = "";
 	foreach($tweets as $tweetObject) {
 		$tweetToShuffle = $tweetToShuffle . $tweetObject->tweetContent . " ";
+
+//		if($tweetObject !== end($tweets)) {
+//			$tweetToShuffle = $tweetToShuffle." ";
+//		}
 	}
 
 	$tweetToShuffle = explode(" ", $tweetToShuffle);
 	shuffle($tweetToShuffle);
 	$ipsum = implode(" ", $tweetToShuffle);
-	return ($ipsum);
+	Ipsum::create($request->all());
+});
+
+Route::get('/ipsum', function () {
+	return Ipsum::take(25)->orderBy("ipsumDateTime", "DESC")->get();
 });
 
 Route::get('/ipsum/{profileId}', function ($profileId) {
@@ -57,10 +57,6 @@ Route::post("/profile", function (Request $request) {
 
 Route::get("profile/{id}", function ($id) {
 	return Profile::where("profileId", $id)->get();
-});
-
-Route::post("/tweet", function (Request $request) {
-	Tweet::create($request->all());
 });
 
 Route::get("/tweetByTweetTwitterAtHandle/{tweetTwitterAtHandle}", function ($tweetTwitterAtHandle) {
@@ -87,8 +83,4 @@ Route::get("/tweetByTweetTwitterAtHandle/{tweetTwitterAtHandle}", function ($twe
 
 Route::get("/tweet/{tweetTwitterUserId}", function ($twitterUserId) {
 	return Tweet::where("tweetTwitterUserId", $twitterUserId)->get();
-});
-
-Route::post("/twitter-user", function (Request $request) {
-	TwitterUser::create($request->all());
 });

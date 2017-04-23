@@ -24,6 +24,9 @@ Route::get('/privacy', function () {
 Route::get('/terms', function () {
 	return view('welcome');
 });
+Route::get('/feed', function () {
+	return view('welcome');
+});
 Route::get('twitter/oauth', ['as' => 'twitter.login', function(){
 	// your SIGN IN WITH TWITTER  button should point to this route
 	$sign_in_twitter = true;

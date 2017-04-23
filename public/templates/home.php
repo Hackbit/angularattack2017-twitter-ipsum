@@ -16,7 +16,8 @@
 			<div class="col-xs-8 col-xs-offset-2">
 				<div align="center">
 					<p class="white-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit!</p><br/>
-					<p class="white-text">Twitter ipsum is a project made for Angular Attack 2017 that generates lorem ipsum, or text that is
+					<p class="white-text">Twitter ipsum is a project made for Angular Attack 2017 that generates lorem ipsum,
+						or text that is
 						used
 						as filler in graphic and web design, from Tweets sent by anyone you like! Just enter a search for
 						their

@@ -14,7 +14,7 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" routerLink="">Twitter Ipsum</a>
+			<a class="navbar-brand" routerLink=""><img src="../images/twitter-ipsum-small.png" class="img-responsive" alt="Twitter Ipsum Logo"></a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->

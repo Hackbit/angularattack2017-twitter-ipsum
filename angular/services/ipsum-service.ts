@@ -30,7 +30,7 @@ export class IpsumService extends BaseService {
 			.map(BaseService.extractData)
 			.catch(BaseService.handleError));
 	}
-	getAllIpsum() : Observable<Ipsum[]> {
+	getAllIpsum() : Observable<any[]> {
 		return(this.http.get(this.ipsumUrl)
 			.map(BaseService.extractData)
 			.catch(BaseService.handleError));

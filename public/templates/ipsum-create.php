@@ -1,12 +1,11 @@
-<h2>Ipsum Create</h2>
 <form #ipsumCreateForm="ngForm" name="ipsumCreateForm" (ngSubmit)="createIpsum();" novalidate>
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
 			<div class="input-group main-search">
 				<span class="input-group-addon" id="at-add-on">@</span>
 				<input type="text" name="twitterUserAtHandle" class="form-control" placeholder="realDonaldTrump" required maxlength="32"
-						 [(ngModel)]="newIpsumRequest.twitterUserAtHandle" #twitterUserAtHandle="ngModel"
-						 ng2-auto-complete [source]="userNames" [min-chars]="3" (keypress)="getAutocompleteNames()"/>
+						 [(ngModel)]="newIpsumRequest.twitterUserAtHandle" (keyup)="twitterUserAtHandleSubject.next($event)" #twitterUserAtHandle="ngModel"
+						 ng2-auto-complete [source]="userNames" />
 				<span class="input-group-btn">
 				<button [disabled]="ipsumCreateForm.invalid" class="btn btn-default" type="submit">Generate!</button>
 			</span>

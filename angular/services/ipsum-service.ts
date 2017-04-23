@@ -13,7 +13,7 @@ export class IpsumService extends BaseService {
 	}
 
 	//define the API endpoint
-	private ipsumUrl = "api/ipsum/";
+	private ipsumUrl = "api/ipsum";
 
 	createIpsum(ipsumRequest : IpsumRequest) : Observable<Status> {
 		return(this.http.post(this.ipsumUrl, ipsumRequest)
@@ -26,7 +26,7 @@ export class IpsumService extends BaseService {
 			.catch(BaseService.handleError));
 	}
 	getIpsumByProfileId(profileId : number) : Observable<Ipsum[]> {
-		return(this.http.get(this.ipsumUrl + profileId)
+		return(this.http.get(this.ipsumUrl + "/" + profileId)
 			.map(BaseService.extractData)
 			.catch(BaseService.handleError));
 	}

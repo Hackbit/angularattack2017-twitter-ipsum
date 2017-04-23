@@ -4,7 +4,7 @@
 		<div class="col-xs-8 col-xs-offset-2">
 			<div class="input-group main-search">
 				<span class="input-group-addon" id="at-add-on">@</span>
-				<input type="text" class="form-control" placeholder="realDonaldTrump" required maxlength="32"
+				<input type="text" name="twitterUserAtHandle" class="form-control" placeholder="realDonaldTrump" required maxlength="32"
 						 [(ngModel)]="newIpsumRequest.twitterUserAtHandle" #twitterUserAtHandle="ngModel"/>
 				<span class="input-group-btn">
 				<button [disabled]="ipsumCreateForm.invalid" class="btn btn-default" type="submit">Generate!</button>

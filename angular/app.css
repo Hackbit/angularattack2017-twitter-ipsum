@@ -62,9 +62,10 @@ button:active {
 }
 
 .navbar-brand > img {
-	margin: auto;
-	padding-top: 0;
-	padding-bottom: 15px;
+	left: 50%;
+	position: relative;
+	transform: translateX(-50%);
+}
 }
 /**********
 Splash Page

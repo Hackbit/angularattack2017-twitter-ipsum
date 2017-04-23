@@ -31,6 +31,7 @@
 	},
 	"devDependencies": {
 		"@types/node": "^6.0.46",
+		"autocomplete.js": "^0.28.1",
 		"awesome-typescript-loader": "^3.1.2",
 		"bootstrap-loader": "^2.0.0",
 		"bootstrap-sass": "^3.3.7",

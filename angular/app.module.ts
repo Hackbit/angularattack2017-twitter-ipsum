@@ -5,11 +5,12 @@ import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {allAppComponents, appRoutingProviders, routing} from "./app.routes";
 import {IpsumService} from "./services/ipsum-service";
+import {ClipboardModule} from "ngx-clipboard";
 
 const moduleDeclarations = [AppComponent];
 
 @NgModule({
-	imports:      [BrowserModule, FormsModule, HttpModule, routing],
+	imports:      [BrowserModule, FormsModule, HttpModule, ClipboardModule, routing],
 	declarations: [...moduleDeclarations, ...allAppComponents],
 	bootstrap:    [AppComponent],
 	providers:    [appRoutingProviders, IpsumService]
